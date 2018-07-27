@@ -31,7 +31,7 @@ const Map = dynamic(
 export default () => (
   <Wrapper>
     <MapContainer>
-      <Map />
+      <Map week={3} />
     </MapContainer>
     <Sidebar>
       asd

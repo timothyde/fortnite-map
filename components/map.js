@@ -64,7 +64,7 @@ export default class Map extends React.Component {
       'type': 'circle',
       'source': {
         'type': 'geojson',
-        'data': challenges({ week: 3 }).getFeatureCollection()
+        'data': challenges({ week: this.props.week }).getFeatureCollection()
       },
       paint: {
         'circle-color': { type: 'identity', property: 'color' },
@@ -125,7 +125,14 @@ export default class Map extends React.Component {
       paint: {
         'text-color': '#fff',
         'text-halo-color': '#000',
-        'text-halo-width': 0.5
+        'text-halo-width': 0.5,
+        'text-opacity': [
+          'interpolate', ['linear'], ['zoom'],
+          13, 0,
+          14, 1,
+          16.5, 1,
+          17.5, 0,
+        ]
       }
     });
 
