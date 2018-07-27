@@ -2,7 +2,7 @@ import mapboxgl from 'mapbox-gl';
 import styled from 'styled-components';
 
 import mapstyle from '../utils/mapstyle';
-import cities from '../utils/cities';
+import cities from '../utils/season5/cities';
 import challenges from '../utils/challenges';
 
 const Container = styled.div`
@@ -60,17 +60,65 @@ export default class Map extends React.Component {
     });
 
     this.map.addLayer({
-      "id": "cities",
-      "type": "symbol",
-      "source": {
-        "type": "geojson",
-        "data": cities()
+      'id': 'challenges-points',
+      'type': 'circle',
+      'source': {
+        'type': 'geojson',
+        'data': challenges({ week: 3 }).getFeatureCollection()
       },
-      "layout": {
-        "text-field": "{name}",
-        "text-font": ["Open Sans Bold"],
-        "text-offset": [0, 0],
-        "text-anchor": "center",
+      paint: {
+        'circle-color': { type: 'identity', property: 'color' },
+        'circle-radius': 10
+      },
+      filter: [
+        'all', ['==', '$type', 'Point']
+      ]
+    });
+
+    this.map.addLayer({
+      'id': 'challenges-areas',
+      'type': 'fill',
+      'source': {
+        'type': 'geojson',
+        'data': challenges({ week: 3 }).getFeatureCollection()
+      },
+      paint: {
+        'fill-color': { type: 'identity', property: 'color' },
+        'fill-opacity': 0.2
+      },
+      filter: [
+        'all', ['==', '$type', 'Polygon']
+      ]
+    });
+
+    this.map.addLayer({
+      'id': 'challenges-areas-outline',
+      'type': 'line',
+      'source': {
+        'type': 'geojson',
+        'data': challenges({ week: 3 }).getFeatureCollection()
+      },
+      paint: {
+        'line-color': { type: 'identity', property: 'color' },
+        'line-width': 2
+      },
+      filter: [
+        'all', ['==', '$type', 'Polygon']
+      ]
+    });
+
+    this.map.addLayer({
+      'id': 'cities',
+      'type': 'symbol',
+      'source': {
+        'type': 'geojson',
+        'data': cities.getAnchorCollection()
+      },
+      'layout': {
+        'text-field': '{name}',
+        'text-font': ['Open Sans Bold'],
+        'text-offset': [0, 0],
+        'text-anchor': 'center',
         'text-transform': 'uppercase',
         'text-size': 12
       },
@@ -78,19 +126,6 @@ export default class Map extends React.Component {
         'text-color': '#fff',
         'text-halo-color': '#000',
         'text-halo-width': 0.5
-      }
-    });
-
-    this.map.addLayer({
-      "id": "challenges",
-      "type": "circle",
-      "source": {
-        "type": "geojson",
-        "data": challenges({ week: 3 })
-      },
-      paint: {
-        'circle-color': { type: 'identity', property: 'color' },
-        'circle-radius': 10
       }
     });
 

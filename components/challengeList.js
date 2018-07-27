@@ -16,14 +16,14 @@ export default ({ week }) => (
     <List
       size="large"
       bordered
-      dataSource={challenges({ week }).features.filter(challenge => !challenge.properties.isBattlePass)}
-      renderItem={challenge => (<Challenge>{challenge.properties.name}</Challenge>)}
+      dataSource={challenges({ week }).getChallenges().filter(challenge => !challenge.isBattlePass)}
+      renderItem={challenge => (<Challenge>{challenge.getName()}</Challenge>)}
     />
     <List
       size="large"
       bordered
-      dataSource={challenges({ week }).features.filter(challenge => challenge.properties.isBattlePass)}
-      renderItem={challenge => (<BattlePassChallenge>{challenge.properties.name}</BattlePassChallenge>)}
+      dataSource={challenges({ week }).getChallenges().filter(challenge => challenge.isBattlePass)}
+      renderItem={challenge => (<BattlePassChallenge>{challenge.getName()}</BattlePassChallenge>)}
     />
   </div>
 )
