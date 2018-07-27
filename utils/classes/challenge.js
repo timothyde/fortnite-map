@@ -13,7 +13,7 @@ export default class Challenge {
    * @param  {boolean} isBattlePass - Specifies whether or not it is a battle pass challenge or not
    * @param  {boolean} isHard - Specifies whether or not challenge is marked as (HARD)
    */
-  constructor({ type, name, coordinates, xp, target, isBattlePass, isHard, color }) {
+  constructor({ type, name, coordinates, xp, target, isBattlePass, isHard, color, radius }) {
     this.type = type;
     this.name = name;
     this.coordinates = coordinates;
@@ -22,6 +22,7 @@ export default class Challenge {
     this.isBattlePass = isBattlePass;
     this.isHard = isHard;
     this.color = color ? color : '#722ed1';
+    this.radius = radius ? radius : 0.05;
   }
 
   /**
@@ -59,7 +60,7 @@ export default class Challenge {
 
         const coordinates = this.coordinates.length ? this.coordinates[0] : [];
 
-        const radius = 0.05;
+        const radius = this.radius;
         const options = { steps: 40, units: 'kilometers' };
         const area = circle(coordinates, radius, options);
 
@@ -81,7 +82,7 @@ export default class Challenge {
    */
   getFeature() {
 
-    const { xp, target, isBattlePass, color } = this;
+    const { xp, target, isBattlePass, color, radius } = this;
 
     const geometry = this.getGeometry();
     const properties = {

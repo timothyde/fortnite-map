@@ -1,10 +1,11 @@
 import * as turf from '@turf/helpers';
 
 export default class City {
-  constructor({ name, center, anchor }) {
+  constructor({ name, radius, center, anchor }) {
     this.name = name;
     this.center = center;
     this.anchor = anchor;
+    this.radius = radius ? radius : 0.05;
   }
 
   getCenter() {
@@ -27,7 +28,7 @@ export default class City {
   }
 
   getCenterFeature() {
-    const { name, center } = this;
+    const { name, radius, center } = this;
 
     const geometry = {
       type: 'Point',
@@ -35,7 +36,8 @@ export default class City {
     }
 
     const properties = {
-      name
+      name,
+      radius
     }
     const feature = turf.feature(geometry, properties);
     return feature;

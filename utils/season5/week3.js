@@ -36,6 +36,7 @@ const c4 = new Challenge({
   type: 'Area',
   name: 'Search chests in Fatal Fields',
   coordinates: cities.getCity('Fatal Fields').getCenter(),
+  radius: cities.getCity('Fatal Fields').radius,
   xp: 500,
   target: 7,
   isBattlePass: true,
@@ -61,9 +62,8 @@ const c5 = new Challenge({
 const c6 = new Challenge({
   type: 'Area',
   name: 'Eliminate opponents in Haunted Hills',
-  coordinates: [
-    [0.002226709810088323, -0.0033626199014094027]
-  ],
+  coordinates: cities.getCity('Haunted Hills').getCenter(),
+  radius: cities.getCity('Haunted Hills').radius,
   xp: 500,
   target: 5,
   isBattlePass: true,
