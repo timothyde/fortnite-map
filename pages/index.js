@@ -1,6 +1,9 @@
 import dynamic from 'next/dynamic';
 import { Icon } from 'antd';
 import styled from 'styled-components';
+
+import AppContext, { AppProvider } from '../utils/context';
+
 import Sidebar from '../components/sidebar';
 
 const Wrapper = styled.div`
@@ -29,12 +32,16 @@ const Map = dynamic(
 );
 
 export default () => (
-  <Wrapper>
-    <MapContainer>
-      <Map week={3} />
-    </MapContainer>
-    <Sidebar>
-      asd
-    </Sidebar>
-  </Wrapper>
+  <AppProvider>
+    <Wrapper>
+      <MapContainer>
+        <AppContext.Consumer>
+          {(context) => (
+            <Map week={context.week} challenges={context.challenges} />
+          )}
+        </AppContext.Consumer>
+      </MapContainer>
+      <Sidebar />
+    </Wrapper>
+  </AppProvider>
 );

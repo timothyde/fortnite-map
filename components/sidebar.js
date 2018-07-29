@@ -12,14 +12,14 @@ const Container = styled.div`
 
 class Sidebar extends React.Component {
 
-  selectWeek = () => {
-    debugger;
+  selectWeek = (week) => {
+    console.log(week);
   }
 
   render() {
     return (
       <Container>
-        <WeekSelect selectWeek={this.selectWeek} />
+        <WeekSelect />
         <ChallengeList week={3} />
       </Container>
     );

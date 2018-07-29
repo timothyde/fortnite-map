@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import mapstyle from '../utils/mapstyle';
 import cities from '../utils/season5/cities';
-import challenges from '../utils/challenges';
+import displayData from '../utils/display';
 
 const Container = styled.div`
   height: 100%;
@@ -52,95 +52,37 @@ export default class Map extends React.Component {
   /**
    * function that executes on the 'load' event of this.map; used for all initial adding of layers etc.
    */
-
   mapDidLoad() {
 
     this.setState({
       mapLoaded: true
     });
 
-    this.map.addLayer({
-      'id': 'challenges-points',
-      'type': 'circle',
-      'source': {
-        'type': 'geojson',
-        'data': challenges({ week: this.props.week }).getFeatureCollection()
-      },
-      paint: {
-        'circle-color': { type: 'identity', property: 'color' },
-        'circle-radius': 10
-      },
-      filter: [
-        'all', ['==', '$type', 'Point']
-      ]
-    });
-
-    this.map.addLayer({
-      'id': 'challenges-areas',
-      'type': 'fill',
-      'source': {
-        'type': 'geojson',
-        'data': challenges({ week: 3 }).getFeatureCollection()
-      },
-      paint: {
-        'fill-color': { type: 'identity', property: 'color' },
-        'fill-opacity': 0.2
-      },
-      filter: [
-        'all', ['==', '$type', 'Polygon']
-      ]
-    });
-
-    this.map.addLayer({
-      'id': 'challenges-areas-outline',
-      'type': 'line',
-      'source': {
-        'type': 'geojson',
-        'data': challenges({ week: 3 }).getFeatureCollection()
-      },
-      paint: {
-        'line-color': { type: 'identity', property: 'color' },
-        'line-width': 2
-      },
-      filter: [
-        'all', ['==', '$type', 'Polygon']
-      ]
-    });
-
-    this.map.addLayer({
-      'id': 'cities',
-      'type': 'symbol',
-      'source': {
-        'type': 'geojson',
-        'data': cities.getAnchorCollection()
-      },
-      'layout': {
-        'text-field': '{name}',
-        'text-font': ['Open Sans Bold'],
-        'text-offset': [0, 0],
-        'text-anchor': 'center',
-        'text-transform': 'uppercase',
-        'text-size': 12
-      },
-      paint: {
-        'text-color': '#fff',
-        'text-halo-color': '#000',
-        'text-halo-width': 0.5,
-        'text-opacity': [
-          'interpolate', ['linear'], ['zoom'],
-          13, 0,
-          14, 1,
-          16.5, 1,
-          17.5, 0,
-        ]
-      }
-    });
+    // display the data
+    displayData({ map: this.map, challenges: this.props.challenges });
 
     // used for location finding
     this.map.on('click', (e) => {
       console.log(e.lngLat);
     })
 
+  }
+
+  /**
+   * updates the 'challenge' source of the map instance and updates it
+   */
+  weekDidChange() {
+    if (this.map.getSource('challenges')) {
+      this.map.getSource('challenges').setData(this.props.challenges.getFeatureCollection());
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    //DETECT WEEK CHANGES
+    const weekChanged = prevProps.week !== this.props.week;
+    if (weekChanged) {
+      this.weekDidChange();
+    }
   }
 
   componentWillUnmount() {

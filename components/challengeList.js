@@ -1,7 +1,7 @@
 import { List } from 'antd';
 import styled from 'styled-components';
 
-import challenges from '../utils/challenges';
+import AppContext from '../utils/context';
 
 const Challenge = styled(List.Item)`
 
@@ -12,18 +12,22 @@ const BattlePassChallenge = styled(List.Item)`
 `
 
 export default ({ week }) => (
-  <div>
-    <List
-      size="large"
-      bordered
-      dataSource={challenges({ week }).getChallenges().filter(challenge => !challenge.isBattlePass)}
-      renderItem={challenge => (<Challenge>{challenge.getName()}</Challenge>)}
-    />
-    <List
-      size="large"
-      bordered
-      dataSource={challenges({ week }).getChallenges().filter(challenge => challenge.isBattlePass)}
-      renderItem={challenge => (<BattlePassChallenge>{challenge.getName()}</BattlePassChallenge>)}
-    />
-  </div>
+  <AppContext.Consumer>
+    {(context) => (
+      <div>
+        <List
+          size="large"
+          bordered
+          dataSource={context.challenges.getChallenges().filter(challenge => !challenge.isBattlePass)}
+          renderItem={challenge => (<Challenge>{challenge.getName()}</Challenge>)}
+        />
+        <List
+          size="large"
+          bordered
+          dataSource={context.challenges.getChallenges().filter(challenge => challenge.isBattlePass)}
+          renderItem={challenge => (<BattlePassChallenge>{challenge.getName()}</BattlePassChallenge>)}
+        />
+      </div>
+    )}
+  </AppContext.Consumer>
 )
