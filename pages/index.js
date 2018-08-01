@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 
 const MapContainer = styled.div`
   height: 100%;
-  width: 70%;
+  width: 100%;
 `
 
 const Loader = styled(Icon)`

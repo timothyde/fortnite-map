@@ -16,9 +16,6 @@ export default () => {
     "sources": {
       "season5": {
         "type": "raster",
-        // point to our third-party tiles. Note that some examples
-        // show a "url" property. This only applies to tilesets with
-        // corresponding TileJSON (such as mapbox tiles). 
         "tiles": [
           'http://localhost:3001/season5/{z}/{x}/{y}.png'
         ],
@@ -41,25 +38,5 @@ export default () => {
         "maxzoom": 24
       }
     ]
-    // sources: {
-    //   'season5': {
-    //     type: 'raster',
-    //     tiles: [
-    //       'http://localhost:3001/season5/{z}/{x}/{y}.png'
-    //     ],
-    //     minzoom: 0,
-    //     maxzoom: 12,
-    //     tileSize: 512
-    //   },
-    // },
-    // layers: [
-    //   {
-    //     id: 'background',
-    //     type: 'background',
-    //     paint: {
-    //       'background-color': '#f00'
-    //     }
-    //   }
-    // ]
   }
 };

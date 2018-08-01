@@ -54,6 +54,7 @@ const fatalFields = new City({
 
 const paradisePalms = new City({
   name: 'Paradise Palms',
+  radius: 0.075,
   anchor: [0.012349471679073076, -0.011667036132166686],
   center: [0.012347861742085797, -0.011553748353634319]
 });
@@ -66,6 +67,7 @@ const saltySprings = new City({
 
 const retailRow = new City({
   name: 'Retail Row',
+  radius: 0.07,
   anchor: [0.011254372349043251, -0.008400650361267026],
   center: [0.011243508501252109, -0.008415151688140554]
 });
@@ -84,12 +86,14 @@ const greasyGrove = new City({
 
 const snobbyShores = new City({
   name: 'Snobby Shores',
+  radius: 0.09,
   anchor: [0.0011615870148489194, -0.0072208023386792775],
   center: [0.001211177998357016, -0.0071260846659555455]
 });
 
 const lootLake = new City({
   name: 'Loot Lake',
+  radius: 0.14,
   anchor: [0.006556359909382081, -0.006104291790137495],
   center: [0.006361231216004626, -0.005987214879709768]
 });

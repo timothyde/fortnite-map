@@ -4,6 +4,7 @@
     "name": "Timothy Krechel"
   },
   "keywords": [],
+  "license": "MIT",
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",

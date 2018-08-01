@@ -5,19 +5,23 @@ import AppContext from '../utils/context';
 
 const Option = Select.Option;
 
+const Container = styled.div`
+  width: 100%;
+`
+
 const StyledSelect = styled(Select)`
   width: 100%;
 `
 
 export default (props) => (
-  <div>
-    <StyledSelect size='large' defaultValue={5} onChange={props.selectSeason}>
+  <Container>
+    {/* <StyledSelect size='large' defaultValue={5} onChange={props.selectSeason}>
       <Option value={1} disabled>Season 1</Option>
       <Option value={2} disabled>Season 2</Option>
       <Option value={3} disabled>Season 3</Option>
       <Option value={4} disabled>Season 4</Option>
       <Option value={5}>Season 5</Option>
-    </StyledSelect>
+    </StyledSelect> */}
     <AppContext.Consumer>
       {(context) => (
         <StyledSelect size='large' defaultValue={3} onChange={context.selectWeek}>
@@ -34,5 +38,5 @@ export default (props) => (
         </StyledSelect>
       )}
     </AppContext.Consumer>
-  </div>
+  </Container>
 )

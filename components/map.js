@@ -31,7 +31,7 @@ export default class Map extends React.Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: mapstyle(),
-      center: [0.007533689066, -0.007533689066],
+      center: [0.004, -0.007533689066],
       zoom: 15
     });
 
@@ -42,7 +42,7 @@ export default class Map extends React.Component {
     //BUT ADD SCALE ANYWAYS
     this.map.addControl(new mapboxgl.ScaleControl({
       maxWidth: 200,
-    }), 'bottom-left');
+    }), 'bottom-right');
 
     this.map.on('load', () => {
       this.mapDidLoad();
