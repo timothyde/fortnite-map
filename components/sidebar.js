@@ -63,6 +63,8 @@ const Info = styled.div`
 `
 
 const OpenModal = styled.button`
+  background: transparent;
+  border: none;
   font-family: 'Luckiest Guy';
   font-size: 24px;
   height: 24px;
@@ -89,7 +91,7 @@ class Sidebar extends React.Component {
   render() {
     return (
       <Container>
-        <Media query="(max-width: 768px)">
+        <Media query='(max-width: 768px)'>
           {matches =>
             !matches ? (
               <div>
@@ -105,7 +107,7 @@ class Sidebar extends React.Component {
               </div>
             ) : (
                 <div>
-                  <OpenModal onClick={this.toggleModal}>{this.state.visible ? 'close' : 'menu'}</OpenModal>
+                  <OpenModal onClick={this.toggleModal}>{this.state.visible ? 'Close' : 'Menu'}</OpenModal>
                   <Modal
                     style={{ top: 40, backgroundColor: 'transparent' }}
                     visible={this.state.visible}

@@ -6,9 +6,6 @@ export default () => {
       'mapbox:autocomposite': false,
       'mapbox:type': 'template',
       'maputnik:renderer': 'mbgljs',
-      'openmaptiles:version': '3.x',
-      'openmaptiles:mapbox:owner': 'openmaptiles',
-      'openmaptiles:mapbox:source:url': 'mapbox://openmaptiles.4qljc88t'
     },
     bearing: 0,
     pitch: 0,

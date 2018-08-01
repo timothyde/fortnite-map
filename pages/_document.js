@@ -1,39 +1,15 @@
 import Document, { Head, Main, NextScript } from "next/document";
-// css/styles.less -> ../assets/css/styles.less
-// see .babelrc for more detail
+import styledNormalize from 'styled-normalize';
 import styles from "styles/index.less";
 import styled, { injectGlobal, ServerStyleSheet } from "styled-components";
 
 injectGlobal`
 
+  ${styledNormalize}
+
   @font-face {
     font-family: 'Luckiest Guy'; /*a name to be used later*/
     src: url('static/fonts/LuckiestGuy.ttf'); /*URL to font*/
-  }
-
-  h1 {
-    font-size: 42px;
-    font-weight: 700;
-    text-transform: none;
-  }
-
-  h2 {
-    font-size: 48px;
-    font-weight: 600;
-    line-height: 64px;
-    text-transform: none;
-  }
-
-  h5 {
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  @media (max-width: 576px) {
-    h2 {
-      font-size: 32px;
-      line-height: 40px;  
-    }
   }
 
 `;
