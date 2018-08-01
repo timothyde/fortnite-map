@@ -6,6 +6,11 @@ import styled, { injectGlobal, ServerStyleSheet } from "styled-components";
 
 injectGlobal`
 
+  @font-face {
+    font-family: 'Luckiest Guy'; /*a name to be used later*/
+    src: url('static/fonts/LuckiestGuy.ttf'); /*URL to font*/
+  }
+
   h1 {
     font-size: 42px;
     font-weight: 700;
