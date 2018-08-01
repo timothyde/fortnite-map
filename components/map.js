@@ -8,6 +8,30 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
 
+  .mapboxgl-ctrl-scale {
+    font-size: 14px;
+    background-color: transparent;
+    border-width: medium 2px 2px;
+    border-style: none none solid;
+    border-color: #fff;
+    padding: 0 5px;
+    color: #fff;
+    font-family: 'Luckiest Guy';
+    line-height: 24px;
+    overflow: hidden;
+
+    &:after {
+      margin-left: -12px;
+      transform: skewX(25deg);
+      float: right;
+      margin-right: -20px;
+      content: '';
+      height: 24px;
+      width: 70%;
+      background: linear-gradient(to right, rgba(255,255,255,0.2) 0%,rgba(255,255,255,1) 100%);
+    }
+  }
+
   .mapboxgl-ctrl-group {
     border-radius: 0px !important;
     box-shadow: 0 0 0 0 !important;
