@@ -36,9 +36,10 @@ const Heading = styled.div`
 const HeadingSmall = styled.div`
   background: rgba(0,0,0,0.55);
   color: #fff;
+  font-family: 'Luckiest Guy';
   font-size: 18px;
   height: 24px;
-  line-height: 22px;
+  line-height: 26px;
   padding: 2px 8px;
   text-transform: uppercase;
   width: 100%;
