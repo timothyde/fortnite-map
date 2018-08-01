@@ -14,7 +14,7 @@ const Container = styled.div`
 `
 
 const Section = styled.div`
-  background: rgba(150,0,0,0.35);
+  background: rgba(70,40,40,0.75);
   margin-bottom: 8px;
   margin-left: 24px;
   width: 100%;
@@ -62,7 +62,7 @@ class Sidebar extends React.Component {
       <Container>
         <Section>
           <Heading>Season 5</Heading>
-          <Info>Ipsum sanctus dolores et sit consetetur amet accusam invidunt consetetur dolor, rebum sed sea dolor accusam dolore ea sea, sed.</Info>
+          <Info>This map shows you all the locations and areas of a week's challenges. Simply go ahead and choose the week you need to complete.</Info>
           <WeekSelect />
         </Section>
         <Section>
