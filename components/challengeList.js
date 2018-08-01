@@ -36,7 +36,7 @@ const ListHeadingTitle = styled.div`
 `
 
 const ChallengeList = styled(List)`
-  margin-bottom: ${props => props.margin ? '4px' : '0px'};
+  margin-bottom: ${props => props.useMargin ? '4px' : '0px'};
 `
 
 const Challenge = styled(List.Item)`
@@ -90,7 +90,6 @@ export default () => (
         </ListHeading>
         <ChallengeList
           size="large"
-          margin={true}
           dataSource={context.challenges.getChallenges().filter(challenge => !challenge.isBattlePass)}
           renderItem={challenge => (<ChallengeItem challenge={challenge} />)}
         />

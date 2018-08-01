@@ -24,9 +24,10 @@ const Section = styled.div`
 const Heading = styled.div`
   background: rgba(0,0,0,0.55);
   color: #fff;
-  font-size: 30px;
+  font-family: 'Luckiest Guy';
+  font-size: 28px;
   height: 32px;
-  line-height: 30px;
+  line-height: 38px;
   padding: 2px 8px;
   text-transform: uppercase;
   width: 100%;
