@@ -35,11 +35,7 @@ export default () => (
   <AppProvider>
     <Wrapper>
       <MapContainer>
-        <AppContext.Consumer>
-          {(context) => (
-            <Map week={context.week} challenges={context.challenges} />
-          )}
-        </AppContext.Consumer>
+        <Map />
       </MapContainer>
       <Sidebar />
     </Wrapper>
