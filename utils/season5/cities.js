@@ -74,6 +74,7 @@ const retailRow = new City({
 
 const dustyDivot = new City({
   name: 'Dusty Divot',
+  radius: 0.11,
   anchor: [0.008933597810056426, -0.007665361300070117],
   center: [0.009008052116485032, -0.007893521073938814]
 });

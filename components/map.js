@@ -124,6 +124,7 @@ export default class FortniteMap extends React.Component {
           <StyledMap
             style={mapstyle()}
             onStyleLoad={() => { console.log('LOADED') }}
+            onClick={(map, e) => console.log(e.lngLat)}
             center={[0.004, -0.0075]}
             zoom={[15]}>
             <ScaleControl style={{}} className='fortnite-map-scale-control' />

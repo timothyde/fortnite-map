@@ -1,11 +1,11 @@
-import challenges from './challenges';
+import challenges, { defaultWeek } from './challenges';
 
 const AppContext = React.createContext();
 
 class AppProvider extends React.Component {
   state = {
-    challenges: challenges({ week: 3 }),
-    week: 3,
+    challenges: challenges({ week: defaultWeek }),
+    week: defaultWeek,
     selectWeek: (week) => {
       this.setState({
         challenges: challenges({ week }),

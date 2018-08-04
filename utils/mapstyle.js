@@ -14,7 +14,7 @@ export default () => {
       'season5': {
         'type': 'raster',
         'tiles': [
-          'http://localhost:3001/season5/{z}/{x}/{y}.png'
+          'http://localhost:8080/data/season5/{z}/{x}/{y}.png'
         ],
         'tileSize': 512
       }
