@@ -68,6 +68,7 @@ const c5 = new Challenge({
 
   ],
   xp: 500,
+  icon: 'lightning-bolt',
   target: 7,
   isBattlePass: true,
   isHard: false

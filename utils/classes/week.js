@@ -13,6 +13,7 @@ export default class Week {
       type: 'FeatureCollection',
       features
     }
+    console.log(collection);
     return collection;
   }
 

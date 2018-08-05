@@ -9,8 +9,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "sprites": "svgo -f ./icons && spritezero ./static/sprites/sprites ./icons --ratio=1 && spritezero ./static/sprites/sprites@2x ./icons --ratio=2",
+    "start": "next start"
   },
   "dependencies": {
     "@turf/circle": "^6.0.1",
@@ -32,6 +33,8 @@
     "uid": "0.0.2"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.5.0"
+    "@mapbox/spritezero-cli": "^2.1.0",
+    "babel-plugin-styled-components": "^1.5.0",
+    "babel-plugin-transform-define": "^1.3.0"
   }
 }

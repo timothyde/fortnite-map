@@ -27,6 +27,7 @@ const c3 = new Challenge({
     [0.0077816155738048565, -0.011075374091689127]
   ],
   xp: 500,
+  icon: 'star',
   target: 1,
   isBattlePass: false,
   isHard: true
@@ -54,6 +55,7 @@ const c5 = new Challenge({
     [0.004799620700026708, -0.011653722593152338]
   ],
   xp: 500,
+  icon: 'clay-pigeon',
   target: 5,
   isBattlePass: true,
   isHard: false

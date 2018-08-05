@@ -47,6 +47,7 @@ const c4 = new Challenge({
     [0.0030003467396113592, -0.001980826455167062]
   ],
   xp: 500,
+  icon: 'basketball',
   target: 5,
   isBattlePass: true,
   isHard: false
@@ -66,12 +67,14 @@ const c5 = new Challenge({
 const c6 = new Challenge({
   type: 'Point',
   name: 'Search between an oasis, rock archway, and dinosaurs',
-  coordinates: [0.011466492196262834, -0.012737581468030612],
-  radius: cities.getCity('Haunted Hills').radius,
-  xp: 100,
+  coordinates: [
+    [0.01146002265662105, -0.012731526926117454]
+  ],
+  xp: 1000,
+  icon: 'star',
   target: 1,
   isBattlePass: true,
-  isHard: false
+  isHard: true
 });
 
 const c7 = new Challenge({

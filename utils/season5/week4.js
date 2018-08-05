@@ -26,6 +26,7 @@ const c2 = new Challenge({
   ],
   xp: 500,
   target: 5,
+  icon: 'hoop',
   isBattlePass: false,
   isHard: false
 });
@@ -69,6 +70,7 @@ const c6 = new Challenge({
   ],
   xp: 1000,
   target: 1,
+  icon: 'star',
   isBattlePass: true,
   isHard: true
 });

@@ -40,6 +40,21 @@ export default ({ map, challenges }) => {
   });
 
   map.addLayer({
+    'id': 'challenges-points-icons',
+    'type': 'symbol',
+    'source': 'challenges',
+    layout: {
+      'icon-image': ['get', 'icon'],
+      'icon-size': 0.4,
+      'icon-ignore-placement': true,
+      'icon-allow-overlap': true
+    },
+    filter: [
+      'all', ['==', '$type', 'Point']
+    ]
+  });
+
+  map.addLayer({
     'id': 'challenges-areas',
     'type': 'fill',
     'source': 'challenges',

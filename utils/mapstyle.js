@@ -10,11 +10,12 @@ export default () => {
     bearing: 0,
     pitch: 0,
     glyphs: 'static/fonts/{fontstack}/{range}.pbf',
+    sprite: process.env.SPRITE_URL,
     'sources': {
       'season5': {
         'type': 'raster',
         'tiles': [
-          'http://localhost:8080/data/season5/{z}/{x}/{y}.png'
+          process.env.TILESERVER_URL
         ],
         'tileSize': 512
       }
