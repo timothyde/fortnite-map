@@ -25,7 +25,7 @@ export default class Challenge {
     this.isHard = isHard;
     this.color = color ? color : '#722ed1';
     this.radius = radius ? radius : 0.05;
-    this.id = Math.round(Math.random());
+    this.id = uid();
   }
 
   /**

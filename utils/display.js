@@ -26,6 +26,20 @@ export default ({ map, challenges }) => {
   });
 
   map.addLayer({
+    'id': 'challenges-points-highlight',
+    'type': 'circle',
+    'source': 'challenges',
+    paint: {
+      'circle-color': '#fadb14',
+      'circle-radius': 10,
+      'circle-opacity': 0
+    },
+    filter: [
+      'all', ['==', '$type', 'Point']
+    ]
+  });
+
+  map.addLayer({
     'id': 'challenges-areas',
     'type': 'fill',
     'source': 'challenges',
@@ -39,12 +53,39 @@ export default ({ map, challenges }) => {
   });
 
   map.addLayer({
+    'id': 'challenges-areas-highlight',
+    'type': 'fill',
+    'source': 'challenges',
+    paint: {
+      'fill-color': '#fadb14',
+      'fill-opacity': 0,
+    },
+    filter: [
+      'all', ['==', '$type', 'Polygon']
+    ]
+  });
+
+  map.addLayer({
     'id': 'challenges-areas-outline',
     'type': 'line',
     'source': 'challenges',
     paint: {
       'line-color': { type: 'identity', property: 'color' },
       'line-width': 2
+    },
+    filter: [
+      'all', ['==', '$type', 'Polygon']
+    ]
+  });
+
+  map.addLayer({
+    'id': 'challenges-areas-outline-highlight',
+    'type': 'line',
+    'source': 'challenges',
+    paint: {
+      'line-color': '#fadb14',
+      'line-width': 2,
+      'line-opacity': 0
     },
     filter: [
       'all', ['==', '$type', 'Polygon']

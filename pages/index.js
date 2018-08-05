@@ -34,9 +34,18 @@ const Map = dynamic(
 export default () => (
   <AppProvider>
     <Wrapper>
-      <MapContainer>
-        <Map />
-      </MapContainer>
+      <AppContext.Consumer>
+        {(context) => (
+          <MapContainer>
+            <Map
+              challenges={context.challenges}
+              week={context.week}
+              setHighlighted={context.setHighlighted}
+              highlightedChallengeIds={context.highlightedChallengeIds}
+            />
+          </MapContainer>
+        )}
+      </AppContext.Consumer>
       <Sidebar />
     </Wrapper>
   </AppProvider>
