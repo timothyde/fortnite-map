@@ -36,8 +36,13 @@ export default class CustomDocument extends Document {
     return (
       <html>
         <Head>
-          <meta charSet={process.env.CHARSET} />
+          <title>Interactive Fortnite Map</title>
+          <meta charset="utf-8" />
+          <meta name="google" content="notranslate" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="subject" content="A simple interactive Fortnite Map" />
+          <link rel="manifest" href="/static/manifest.json" />
+          <link rel="shortcut icon" type="image/png" href="/static/icons/favicon.ico" />
           <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
           <style dangerouslySetInnerHTML={{ __html: styles }} />
           {this.props.styleTags}
