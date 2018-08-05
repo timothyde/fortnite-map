@@ -159,10 +159,17 @@ export default class Map extends React.Component {
      * @param  {int} maxOpacity the maximum opacity a highlight layer should get, defaults to 1
      */
     const getOpacity = ({ ids, maxOpacity = 1 }) => {
-      return ids[0] ? ["case",
-        ['==', ['get', 'id'], ids[0]], maxOpacity,
-        0
-      ] : 0;
+
+      //construct an array of conditions to put into 'case' expression
+      const conditions = ids.map(id => [['==', ['get', 'id'], id], maxOpacity]);
+
+      //construct the case expression
+      const opacity = ['case'];
+      conditions.forEach(condition => { condition.forEach(item => { opacity.push(item) }) });
+      opacity.push(0);
+
+      //return the case expression
+      return ids[0] ? opacity : 0;
     }
 
     //set the highlight layers opacity
