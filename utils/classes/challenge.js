@@ -1,3 +1,4 @@
+import uid from 'uid';
 import * as turf from '@turf/helpers';
 import circle from '@turf/circle';
 
@@ -13,16 +14,18 @@ export default class Challenge {
    * @param  {boolean} isBattlePass - Specifies whether or not it is a battle pass challenge or not
    * @param  {boolean} isHard - Specifies whether or not challenge is marked as (HARD)
    */
-  constructor({ type, name, coordinates, xp, target, isBattlePass, isHard, color, radius }) {
+  constructor({ type, name, coordinates, xp, stars, target, isBattlePass, isHard, color, radius }) {
     this.type = type;
     this.name = name;
     this.coordinates = coordinates;
     this.xp = xp;
+    this.stars = stars;
     this.target = target;
     this.isBattlePass = isBattlePass;
     this.isHard = isHard;
     this.color = color ? color : '#722ed1';
     this.radius = radius ? radius : 0.05;
+    this.id = Math.round(Math.random());
   }
 
   /**
@@ -82,17 +85,19 @@ export default class Challenge {
    */
   getFeature() {
 
-    const { xp, target, isBattlePass, color, radius } = this;
+    const { xp, stars, id, target, isBattlePass, color, radius } = this;
 
     const geometry = this.getGeometry();
     const properties = {
       name: this.getName(),
       xp,
+      stars,
+      id,
       target,
       isBattlePass,
       color
     }
-    const feature = turf.feature(geometry, properties);
+    const feature = turf.feature(geometry, properties, { id });
     return feature;
   }
 

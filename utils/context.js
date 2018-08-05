@@ -11,9 +11,18 @@ class AppProvider extends React.Component {
         challenges: challenges({ week }),
         week
       });
+    },
+    highlightedChallengeIds: [],
+    setHighlighted: (highlightedChallengeIds) => {
+      this.setState({
+        highlightedChallengeIds
+      });
     }
   }
+
+
   render() {
+
     return (
       <AppContext.Provider value={this.state}>
         {this.props.children}

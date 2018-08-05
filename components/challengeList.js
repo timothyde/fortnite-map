@@ -42,10 +42,12 @@ const ChallengeList = styled(List)`
 const Challenge = styled(List.Item)`
 
   &&& {
+    background-color: ${props => props.highlighted ? 'rgba(250, 219, 20, 0.75)' : 'transparent'};
     border-top: 2px solid rgba(255,255,255,0.2);
     border-bottom: none;
     min-height: 40px;
     padding: 8px 16px;
+    transition: background-color 200ms ease-in-out;
     width: 100%;
   }
 
@@ -58,8 +60,9 @@ const Challenge = styled(List.Item)`
 `
 
 const ChallengeTitle = styled.div`
-  color: rgba(255,255,255,0.7);
+  color: ${props => props.highlighted ? '#fff' : 'rgba(255,255,255,0.7)'};
   font-weight: 300;
+  transition: color 200ms ease-in-out;
   width: 100%;
 `
 
@@ -73,9 +76,12 @@ const ChallengeProperties = styled.div`
   line-height: 12px;
 `
 
-const ChallengeItem = ({ challenge }) => (
-  <Challenge>
-    <ChallengeTitle>{challenge.getName()}</ChallengeTitle>
+const ChallengeItem = ({ challenge, highlighted, setHighlighted }) => (
+  <Challenge
+    onMouseEnter={() => setHighlighted([challenge.id])}
+    onMouseLeave={() => setHighlighted([])}
+    highlighted={highlighted ? 1 : 0}>
+    <ChallengeTitle highlighted={highlighted ? 1 : 0}>{challenge.getName()}</ChallengeTitle>
   </Challenge>
 )
 
@@ -91,7 +97,11 @@ export default () => (
         <ChallengeList
           size="large"
           dataSource={context.challenges.getChallenges().filter(challenge => !challenge.isBattlePass)}
-          renderItem={challenge => (<ChallengeItem challenge={challenge} />)}
+          renderItem={challenge => (
+            <ChallengeItem
+              highlighted={context.highlightedChallengeIds.includes(challenge.id)}
+              setHighlighted={context.setHighlighted}
+              challenge={challenge} />)}
         />
         <ListHeading isBattlePass>
           <ListHeadingTitle isBattlePass>
@@ -101,7 +111,11 @@ export default () => (
         <ChallengeList
           size="large"
           dataSource={context.challenges.getChallenges().filter(challenge => challenge.isBattlePass)}
-          renderItem={challenge => (<ChallengeItem challenge={challenge} />)}
+          renderItem={challenge => (
+            <ChallengeItem
+              highlighted={context.highlightedChallengeIds.includes(challenge.id)}
+              setHighlighted={context.setHighlighted}
+              challenge={challenge} />)}
         />
       </div>
     )}
