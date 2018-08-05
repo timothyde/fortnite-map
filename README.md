@@ -4,7 +4,7 @@ A performant approach for creating a map application displaying Fortnite BR chal
 
 ### Prerequisites
 
-You need to run your own tile server. I recommend using [TileServer GL](https://github.com/klokantech/tileserver-gl) by downloading the .mbtiles from [here](https://github.com/klokantech/tileserver-gl) and running the following command inside of the directory with the downloaded mbtiles
+You need to run your own tile server. I recommend using [TileServer GL](https://github.com/klokantech/tileserver-gl) by downloading the .mbtiles from [here](https://drive.google.com/file/d/1Dvo833erO_pnGmjUm4EzLhHk_0stfCF6/view?usp=sharing) and running the following command inside of the directory with the downloaded mbtiles
 ```
 docker run --rm -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl
 ```
@@ -23,7 +23,7 @@ Run a development build and start a dev server at http://localhost:3000 via
 npm run dev
 ```
 
-Before running a production build, you might want to update env.js accordingly
+Before running a production build, you might need to update env.js accordingly
 
 Create a production build and start a server at http://localhost:3000 via
 
@@ -69,3 +69,8 @@ See also the list of [contributors]
 ## License
 
 This project is licensed under the MIT License.
+
+## Special Thanks
+
+* [u/DarkLordCZ](https://www.reddit.com/user/DarkLordCZ) - For posting the Season 5 map in high res
+* [u/MarkN22](https://www.reddit.com/r/FortNiteBR/comments/88ktnr/i_calculated_how_big_the_map_was_in_fortnite/) - For providing calculations for Georeferencing the map
