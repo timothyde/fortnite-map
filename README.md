@@ -23,7 +23,15 @@ Run a development build and start a dev server at http://localhost:3000 via
 npm run dev
 ```
 
-Before running a production build, you might need to update env.js accordingly
+Before running a production build, you might need to update env.js accordingly, e.g.
+```
+const prod = process.env.NODE_ENV === 'production'
+
+module.exports = {
+  'process.env.TILESERVER_URL': prod ? 'http://localhost:8080/data/season5/{z}/{x}/{y}.png' : 'http://localhost:8080/data/season5/{z}/{x}/{y}.png',
+  'process.env.SPRITE_URL': prod ? 'http://localhost:3000/static/sprites/sprites' : 'http://localhost:3000/static/sprites/sprites',
+}
+```
 
 Create a production build and start a server at http://localhost:3000 via
 
