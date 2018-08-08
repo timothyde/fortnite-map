@@ -1,6 +1,14 @@
 const env = require('./env.js')
 
 module.exports = {
+  "env": {
+    "test": {
+      "presets": [
+        ["env", { "modules": "commonjs" }],
+        "next/babel"
+      ]
+    }
+  },
   "presets": [
     "next/babel"
   ],
