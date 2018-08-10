@@ -28,7 +28,7 @@ Before running a production build, you might need to update env.js accordingly, 
 const prod = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  'process.env.TILESERVER_URL': prod ? 'http://localhost:8080/data/season5/{z}/{x}/{y}.png' : 'http://localhost:8080/data/season5/{z}/{x}/{y}.png',
+  'process.env.TILESERVER_URL': prod ? 'http://localhost:8080/data/season5/{z}/{x}/{y}.png' : 'http://localhost:8080/data/season5/{z}/{x}/{y}.png',π
   'process.env.SPRITE_URL': prod ? 'http://localhost:3000/static/sprites/sprites' : 'http://localhost:3000/static/sprites/sprites',
 }
 ```
@@ -56,7 +56,18 @@ npm run sprites
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+To deploy, the recommended way is to build the Docker container via the following command:
+```
+docker build -t fortnite-map .
+```
+
+once the build is done, run the container via:
+```
+docker run --rm -itd --name fortnite-map -p 80:3000 fortnite-map
+```
+
+The server then accepts requests on port 80.
+
 
 ## Built With
 
