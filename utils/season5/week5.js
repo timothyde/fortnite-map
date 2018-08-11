@@ -19,7 +19,7 @@ const c2 = new Challenge({
   name: 'Use Rift Portals',
   xp: 500,
   target: 3,
-  isBattlePass: true,
+  isBattlePass: false,
   isHard: false
 });
 
