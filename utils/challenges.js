@@ -4,6 +4,7 @@ import week1 from './season5/week1';
 import week2 from './season5/week2';
 import week3 from './season5/week3';
 import week4 from './season5/week4';
+import week5 from './season5/week5';
 
 export default ({ week }) => {
   switch (week) {
@@ -15,9 +16,11 @@ export default ({ week }) => {
       return week3;
     case 4:
       return week4;
+    case 5:
+      return week5;
     default:
       return new Week([]);
   }
 }
 
-export const defaultWeek = 4;
+export const defaultWeek = 5;

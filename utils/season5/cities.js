@@ -85,6 +85,12 @@ const greasyGrove = new City({
   center: [0.003356744093053976, -0.009708977872037394]
 });
 
+const shiftyShafts = new City({
+  name: 'Shifty Shafts',
+  anchor: [0.005484689859201808, -0.009917407825085434],
+  center: [0.00548871983781396, -0.010221360096991816]
+});
+
 const snobbyShores = new City({
   name: 'Snobby Shores',
   radius: 0.09,
@@ -157,6 +163,7 @@ const cities = new Cities([
   retailRow,
   dustyDivot,
   greasyGrove,
+  shiftyShafts,
   snobbyShores,
   lootLake,
   lonelyLodge,

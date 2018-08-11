@@ -13,25 +13,32 @@
     "x": 40,
     "y": 0
   },
-  "hoop": {
+  "golf": {
     "height": 40,
     "pixelRatio": 1,
     "width": 40,
     "x": 0,
     "y": 40
   },
-  "lightning-bolt": {
+  "hoop": {
     "height": 40,
     "pixelRatio": 1,
     "width": 40,
     "x": 40,
     "y": 40
   },
-  "star": {
+  "lightning-bolt": {
     "height": 40,
     "pixelRatio": 1,
     "width": 40,
     "x": 80,
+    "y": 0
+  },
+  "star": {
+    "height": 40,
+    "pixelRatio": 1,
+    "width": 40,
+    "x": 120,
     "y": 0
   }
 }
