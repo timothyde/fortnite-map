@@ -68,7 +68,7 @@ const c6 = new Challenge({
   type: 'Point',
   name: 'Follow the treasure map found in Snobby Shores',
   coordinates: [
-    [0.012166517401851706, -0.009712464980964342]
+    [0.002376737892490155, -0.0031839902444374957]
   ],
   xp: 1000,
   target: 1,
