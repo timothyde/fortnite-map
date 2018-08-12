@@ -1,17 +1,43 @@
-import { List } from 'antd';
+import { Collapse, List } from 'antd';
 import styled from 'styled-components';
 
 import AppContext from '../utils/context';
 
-const ListHeading = styled.div`
-  ${props => props.isBattlePass ? (
+const StyledCollapse = styled(Collapse)`
+
+  background-color: transparent !important;
+  border-bottom: none;
+
+  &&& .ant-collapse-content {
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  &&& .ant-collapse-content-box {
+    padding: 0 !important;
+  }
+`
+
+const Panel = styled(Collapse.Panel)`
+
+  border-bottom: 2px solid rgba(255,255,255,0.3 ) !important;
+
+  .ant-collapse-header {
+      ${props => props.isBattlePass ? (
     'background: linear-gradient(to right, #503e2f 0%,#503e2f 50%,#3c302b 100%);'
   ) : (
       'background: linear-gradient(to right, #43577a 0%,#43577a 50%,#2f3e5f 100%);'
     )}
-  height: 38px;
-  overflow: hidden;
-  width: 100%;
+    height: 38px;
+    overflow: hidden;
+    padding: 0 !important;
+    width: 100%;
+  }
+
+  i {
+   display: none !important;
+  }
+
 `
 
 const ListHeadingTitle = styled.div`
@@ -32,6 +58,38 @@ const ListHeadingTitle = styled.div`
     line-height: 40px;
     font-size: 11px;
     transform: skewX(-25deg);
+  }
+`
+
+const Minimize = styled.div`
+  border: 2px solid rgba(255,255,255,0.7);
+  width: 38px;
+  height: 38px;
+  position: absolute;
+  margin-left: -44px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::after {
+    content: '-';
+    display: ${props => props.active ? 'inline-block' : 'none'};
+    font-family: 'Luckiest Guy';
+    font-size: 38px;
+    line-height: 44px;
+    text-align: center;
+    width: 100%;
+  
+  }
+  &::before {
+    content: '+';
+    display: ${props => props.active ? 'none' : 'inline-block'};
+    font-family: 'Luckiest Guy';
+    font-size: 38px;
+    line-height: 44px;
+    text-align: center;
+    width: 100%;
   }
 `
 
@@ -85,39 +143,83 @@ const ChallengeItem = ({ challenge, highlighted, setHighlighted }) => (
   </Challenge>
 )
 
-export default () => (
-  <AppContext.Consumer>
-    {(context) => (
-      <div>
-        <ListHeading>
-          <ListHeadingTitle>
-            <p>Weekly Challenges</p>
-          </ListHeadingTitle>
-        </ListHeading>
-        <ChallengeList
-          size="large"
-          dataSource={context.challenges.getChallenges().filter(challenge => !challenge.isBattlePass)}
-          renderItem={challenge => (
-            <ChallengeItem
-              highlighted={context.highlightedChallengeIds.includes(challenge.id)}
-              setHighlighted={context.setHighlighted}
-              challenge={challenge} />)}
-        />
-        <ListHeading isBattlePass>
-          <ListHeadingTitle isBattlePass>
-            <p>Battle Pass Challenges</p>
-          </ListHeadingTitle>
-        </ListHeading>
-        <ChallengeList
-          size="large"
-          dataSource={context.challenges.getChallenges().filter(challenge => challenge.isBattlePass)}
-          renderItem={challenge => (
-            <ChallengeItem
-              highlighted={context.highlightedChallengeIds.includes(challenge.id)}
-              setHighlighted={context.setHighlighted}
-              challenge={challenge} />)}
-        />
-      </div>
-    )}
-  </AppContext.Consumer>
-)
+export default class Challenges extends React.Component {
+
+  state = {
+    activeKeys: [
+      'weekly'
+    ]
+  }
+
+  toggleActive = ({ key }) => {
+
+    const { activeKeys } = this.state;
+
+    const index = activeKeys.indexOf(key);
+    if (index !== -1) {
+      activeKeys.splice(index, 1);
+    } else {
+      activeKeys.push(key);
+    }
+
+    this.setState({
+      activeKeys
+    })
+
+  }
+
+  render() {
+    return (
+      <AppContext.Consumer>
+        {(context) => (
+          <StyledCollapse bordered={false} defaultActiveKey={this.state.activeKeys} activeKey={this.state.activeKeys}>
+            <Minimize
+              onClick={() => this.toggleActive({ key: 'weekly' })}
+              active={this.state.activeKeys.includes('weekly')}
+            />
+            <Panel
+              header={
+                <ListHeadingTitle>
+                  <p>Weekly Challenges</p>
+                </ListHeadingTitle>
+              }
+              key="weekly"
+            >
+              <ChallengeList
+                size="large"
+                dataSource={context.challenges.getChallenges().filter(challenge => challenge.isBattlePass)}
+                renderItem={challenge => (
+                  <ChallengeItem
+                    highlighted={context.highlightedChallengeIds.includes(challenge.id)}
+                    setHighlighted={context.setHighlighted}
+                    challenge={challenge} />)}
+              />
+            </Panel>
+            <Minimize
+              onClick={() => this.toggleActive({ key: 'battlePass' })}
+              active={this.state.activeKeys.includes('battlePass')}
+            />
+            <Panel isBattlePass
+              header={
+                <ListHeadingTitle isBattlePass>
+                  <p>Battle Pass Challenges</p>
+                </ListHeadingTitle>
+              }
+              key="battlePass"
+            >
+              <ChallengeList
+                size="large"
+                dataSource={context.challenges.getChallenges().filter(challenge => !challenge.isBattlePass)}
+                renderItem={challenge => (
+                  <ChallengeItem
+                    highlighted={context.highlightedChallengeIds.includes(challenge.id)}
+                    setHighlighted={context.setHighlighted}
+                    challenge={challenge} />)}
+              />
+            </Panel>
+          </StyledCollapse>
+        )}
+      </AppContext.Consumer>
+    )
+  }
+}

@@ -23,7 +23,7 @@ const Container = styled.div`
 const Section = styled.div`
   background: rgba(70,40,40,0.75);
   margin-bottom: 8px;
-  margin-left: 24px;
+  margin-left: 38px;
   width: 100%;
   -webkit-backdrop-filter: blur(10px);
 
