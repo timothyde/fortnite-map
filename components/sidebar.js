@@ -10,9 +10,10 @@ const Container = styled.div`
   left: 0;
   top: 0;
   padding: 3px;
-  max-width: 30vw;
+  max-width: 40vw;
   margin: 8px;
   max-height: 90vh;
+  overflow-y: scroll;
 
   @media screen and (max-width: 768px) {
     max-width: calc(100% - 38px);
@@ -23,8 +24,7 @@ const Container = styled.div`
 const Section = styled.div`
   background: rgba(70,40,40,0.75);
   margin-bottom: 8px;
-  margin-left: 38px;
-  width: 100%;
+  margin-left: 42px;
   -webkit-backdrop-filter: blur(10px);
 
   @media screen and (max-width: 768px) {
@@ -102,7 +102,7 @@ class Sidebar extends React.Component {
                 </Section>
                 <Section>
                   <HeadingSmall>challenges</HeadingSmall>
-                  <ChallengeList week={3} />
+                  <ChallengeList />
                 </Section>
               </div>
             ) : (
@@ -123,7 +123,7 @@ class Sidebar extends React.Component {
                     </Section>
                     <Section>
                       <HeadingSmall>challenges</HeadingSmall>
-                      <ChallengeList week={3} />
+                      <ChallengeList />
                     </Section>
                   </Modal>
                 </div>

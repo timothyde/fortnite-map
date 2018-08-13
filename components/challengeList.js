@@ -147,7 +147,8 @@ export default class Challenges extends React.Component {
 
   state = {
     activeKeys: [
-      'weekly'
+      'weekly',
+      'battlePass'
     ]
   }
 
