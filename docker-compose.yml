@@ -1,0 +1,21 @@
+version: "3.3"
+
+networks:
+  proxy:
+    external: true
+  internal:
+    external: false
+
+services:
+  fortnite-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    labels:
+      - traefik.backend=fortnite
+      - traefik.frontend.rule=Host:fortnite.timothy.de
+      - traefik.docker.network=proxy
+      - traefik.port=80
+    networks:
+      - internal
+      - proxy
