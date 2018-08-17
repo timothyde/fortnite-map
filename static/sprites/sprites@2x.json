@@ -40,5 +40,12 @@
     "width": 80,
     "x": 240,
     "y": 0
+  },
+  "time": {
+    "height": 80,
+    "pixelRatio": 2,
+    "width": 80,
+    "x": 160,
+    "y": 80
   }
 }

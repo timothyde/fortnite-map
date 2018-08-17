@@ -1,10 +1,11 @@
-import Week from './classes/week';
+import Week from "./classes/week";
 
-import week1 from './season5/week1';
-import week2 from './season5/week2';
-import week3 from './season5/week3';
-import week4 from './season5/week4';
-import week5 from './season5/week5';
+import week1 from "./season5/week1";
+import week2 from "./season5/week2";
+import week3 from "./season5/week3";
+import week4 from "./season5/week4";
+import week5 from "./season5/week5";
+import week6 from "./season5/week6";
 
 export default ({ week }) => {
   switch (week) {
@@ -18,9 +19,11 @@ export default ({ week }) => {
       return week4;
     case 5:
       return week5;
+    case 6:
+      return week6;
     default:
       return new Week([]);
   }
-}
+};
 
-export const defaultWeek = 5;
+export const defaultWeek = 6;
