@@ -15,7 +15,7 @@ services:
       - traefik.backend=fortnite
       - traefik.frontend.rule=Host:fortnite.timothy.de
       - traefik.docker.network=proxy
-      - traefik.port=80
+      - traefik.port=3000
     networks:
       - internal
       - proxy
