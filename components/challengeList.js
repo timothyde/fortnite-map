@@ -126,17 +126,60 @@ const ChallengeProperties = styled.div`
   line-height: 12px;
 `;
 
-const ChallengeItem = ({ challenge, highlighted, setHighlighted }) => (
-  <Challenge
-    onMouseEnter={() => setHighlighted([challenge.id])}
-    onMouseLeave={() => setHighlighted([])}
-    highlighted={highlighted ? 1 : 0}
-  >
-    <ChallengeTitle highlighted={highlighted ? 1 : 0}>
-      {challenge.getName()}
-    </ChallengeTitle>
-  </Challenge>
-);
+/**
+ * Challenge Item React Stateless Functional Component returning the styled List Item called Challenge
+ * @param  {Object} config destructured config object
+ * @param  {Challenge} config.challenge the Challenge instance which is linked to the challenge item
+ * @param  {boolean} config.highlighted indicator whether or not challenge.id is currently inside highlighted array in context
+ * @param  {boolean} config.highlighted indicator whether or not challenge.id is currently inside highlighted array in context
+ * @param  {function} config.setHighlighted indicator whether or not challenge.id is currently inside highlighted array in context
+ */
+const ChallengeItem = ({
+  challenge,
+  highlighted,
+  responsive,
+  setHighlighted
+}) => {
+  /**
+   * Only used on touch devices, added to dermine whether or not challenge should be highlighted
+   * @param  {Object} config destructured config object
+   * @param  {Challenge} config.challenge the Challenge instance which is linked to the challenge item
+   * @param  {boolean} config.highlighted indicator whether or not challenge.id is currently inside highlighted array in context
+   * @param  {function} config.setHighlighted indicator whether or not challenge.id is currently inside highlighted array in context
+   */
+  const toggleHighlighted = ({ challenge, highlighted, setHighlighted }) => {
+    if (highlighted) {
+      setHighlighted([]);
+    } else {
+      setHighlighted([challenge.id]);
+    }
+  };
+
+  responsive = !!responsive;
+
+  return (
+    <Challenge
+      onMouseEnter={() => {
+        if (!responsive) {
+          setHighlighted([challenge.id]);
+        }
+      }}
+      onMouseLeave={() => {
+        if (!responsive) {
+          setHighlighted([]);
+        }
+      }}
+      onTouchStart={() =>
+        toggleHighlighted({ challenge, highlighted, setHighlighted })
+      }
+      highlighted={highlighted ? 1 : 0}
+    >
+      <ChallengeTitle highlighted={highlighted ? 1 : 0}>
+        {challenge.getName()}
+      </ChallengeTitle>
+    </Challenge>
+  );
+};
 
 export default class Challenges extends React.Component {
   state = {
@@ -159,6 +202,7 @@ export default class Challenges extends React.Component {
   };
 
   render() {
+    const { responsive } = this.props;
     return (
       <AppContext.Consumer>
         {context => (
@@ -186,11 +230,12 @@ export default class Challenges extends React.Component {
                   .filter(challenge => !challenge.isBattlePass)}
                 renderItem={challenge => (
                   <ChallengeItem
+                    challenge={challenge}
                     highlighted={context.highlightedChallengeIds.includes(
                       challenge.id
                     )}
+                    responsive={responsive}
                     setHighlighted={context.setHighlighted}
-                    challenge={challenge}
                   />
                 )}
               />
@@ -219,6 +264,7 @@ export default class Challenges extends React.Component {
                       challenge.id
                     )}
                     setHighlighted={context.setHighlighted}
+                    responsive={responsive}
                     challenge={challenge}
                   />
                 )}

@@ -13,7 +13,6 @@ const Container = styled.div`
   max-width: 40vw;
   margin: 8px;
   max-height: 90vh;
-  overflow-y: scroll;
 
   @media screen and (max-width: 768px) {
     max-width: calc(100% - 38px);
@@ -25,6 +24,7 @@ const Section = styled.div`
   background: rgba(70, 40, 40, 0.75);
   margin-bottom: 8px;
   margin-left: 42px;
+  overflow-y: scroll;
   -webkit-backdrop-filter: blur(10px);
 
   @media screen and (max-width: 768px) {
@@ -114,26 +114,29 @@ class Sidebar extends React.Component {
                   {this.state.visible ? "Close" : "Menu"}
                 </OpenModal>
                 <Modal
-                  style={{ top: 40, backgroundColor: "transparent" }}
-                  visible={this.state.visible}
+                  bodyStyle={this.bodyStyle}
+                  closable={false}
+                  footer={null}
                   onOk={this.handleOk}
                   onCancel={this.handleCancel}
-                  footer={null}
-                  bodyStyle={this.bodyStyle}
+                  style={{
+                    top: 4,
+                    left: 82,
+                    maxWidth: "calc(100vw - 102px)",
+                    backgroundColor: "transparent"
+                  }}
+                  visible={this.state.visible}
                 >
-                  <Section>
-                    <Heading>Season 5</Heading>
-                    <Info>
-                      This map shows you all the locations and areas of a week's
-                      challenges. Simply go ahead and choose the week you need
-                      to complete.
-                    </Info>
-                    <WeekSelect />
-                  </Section>
-                  <Section>
-                    <HeadingSmall>challenges</HeadingSmall>
-                    <ChallengeList />
-                  </Section>
+                  <div>
+                    <Section>
+                      <Heading>Season 5</Heading>
+                      <WeekSelect />
+                    </Section>
+                    <Section>
+                      <HeadingSmall>challenges</HeadingSmall>
+                      <ChallengeList responsive />
+                    </Section>
+                  </div>
                 </Modal>
               </div>
             )
