@@ -1,4 +1,4 @@
-@import '~antd/dist/antd.less';
+@import "~antd/dist/antd.less";
 @primary-color: @yellow-6;
 @border-radius-base: 0px;
 @component-background : rgba(57, 32, 32, 0.865);
@@ -7,5 +7,24 @@
 @item-hover-bg : @yellow-6;
 @disabled-color : rgba(255, 255, 255, 0.4);
 @disabled-bg : @background-color-base;
-@background-color-light : @yellow-8 ;
+@background-color-light : @yellow-8;
 @modal-mask-bg: rgba(0, 0, 0, 0.3);
+.challenge-notification {
+  background: rgba(0, 0, 0, 0.55);
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  .ant-notification-notice-message {
+    display: none;
+  }
+  .ant-notification-notice-description {
+    margin-right: 12px;
+    font-family: "Luckiest Guy";
+    font-size: 14px;
+    padding-top: 2px;
+  }
+  .ant-notification-notice-btn {
+    display: none;
+  }
+  .ant-notification-notice-close-x {
+    color: #fff !important;
+  }
+}
