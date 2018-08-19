@@ -40,9 +40,12 @@ export default ({ map, highlightedChallengeIds, setHighlighted }) => {
       features.forEach(feature => {
         notification.open({
           btn: <p />,
+          className: "challenge-notification",
           description: feature.properties.name,
-          placement: "bottomLeft",
-          className: "challenge-notification"
+          onClose: () => {
+            setHighlighted([]);
+          },
+          placement: "bottomLeft"
         });
       });
     }
