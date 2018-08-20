@@ -2,10 +2,6 @@ import { notification } from "antd";
 
 import compareArrays from "./compareArrays";
 
-const notificationStyle = {
-  color: "#fff"
-};
-
 /**
  * @param  {MapboxGl} map the map instance to set the listeners on
  * @param  {Array} highlightedChallengeIds the array of currently highlighted challenge IDs
@@ -49,6 +45,5 @@ export default ({ map, highlightedChallengeIds, setHighlighted }) => {
         });
       });
     }
-    console.log(features);
   });
 };

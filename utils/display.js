@@ -1,5 +1,9 @@
 import cities from "../utils/season5/cities";
-
+/**
+ * Function that takes a map and adds the necessary layers
+ * @param  {MapboxGL} map the map instance that should display the layers
+ * @param  {Week} challenges the week object containing all challenge information
+ */
 export default ({ map, challenges }) => {
   map.addSource("challenges", {
     type: "geojson",
