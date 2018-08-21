@@ -10,7 +10,7 @@ import week6 from "./season5/week6";
  * @param  {number} week The number of the week to fetch
  * @returns {Week} the desired Week object containing a week's challenges, or an empty week as default
  */
-export default ({ week }) => {
+export default ({ week } = {}) => {
   switch (week) {
     case 1:
       return week1;
