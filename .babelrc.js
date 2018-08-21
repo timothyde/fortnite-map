@@ -1,53 +1,49 @@
-const env = require('./env.js')
+const env = require("./env.js");
 
 module.exports = {
-  "env": {
-    "test": {
-      "presets": [
-        ["env", { "modules": "commonjs" }],
-        "next/babel"
-      ]
-    }
-  },
-  "presets": [
-    "next/babel"
-  ],
-  "plugins": [
-    ['transform-define', env],
+  plugins: [
+    ["transform-define", env],
     [
       "import",
       {
-        "libraryName": "antd"
+        libraryName: "antd"
       }
     ],
     [
       "module-resolver",
       {
-        "root": [
-          "."
-        ],
-        "alias": {
-          "styles": "./styles"
+        root: ["."],
+        alias: {
+          styles: "./styles"
         },
-        "cwd": "babelrc"
+        cwd: "babelrc"
       }
     ],
     [
       "wrap-in-js",
       {
-        "extensions": [
-          "less$"
-        ]
+        extensions: ["less$"]
       }
     ],
     [
       "styled-components",
       {
-        "ssr": true,
-        "displayName": true,
-        "preprocess": false
+        ssr: true,
+        displayName: true,
+        preprocess: false
       }
     ]
   ],
-  "ignore": []
-}
+  ignore: [],
+  env: {
+    development: {
+      presets: ["next/babel"]
+    },
+    production: {
+      presets: ["next/babel"]
+    },
+    test: {
+      presets: [["next/babel", { "preset-env": { modules: "commonjs" } }]]
+    }
+  }
+};
